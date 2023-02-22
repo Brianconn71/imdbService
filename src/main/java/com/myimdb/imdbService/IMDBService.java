@@ -39,22 +39,22 @@ public class IMDBService {
 		return imdbRepo.findById(id);
 	}
 	
-//	@PostMapping(value="/films")
-//	ResponseEntity<Film> insertFilm(@RequestBody Film film){
-//		Film savedFilm = imdbRepo.save(film);
-//		return new ResponseEntity<Film>(savedFilm, HttpStatus.OK);
-//	}
+	@PostMapping(value="/films")
+	ResponseEntity<Film> insertFilm(@RequestBody Film film){
+		Film savedFilm = imdbRepo.save(film);
+		return new ResponseEntity<Film>(savedFilm, HttpStatus.OK);
+	}
 	
 //	Send back a link to the product in the header
-	@PostMapping(value="/films")
-	ResponseEntity<Film> insertFilm(@Valid @RequestBody Film film){
-		Film savedFilm = imdbRepo.save(film);
-		URI location = ServletUriComponentsBuilder
-				.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(savedFilm.getId())
-				.toUri();
-		return ResponseEntity.created(location).build();
-	}
+//	@PostMapping(value="/films")
+//	ResponseEntity<Film> insertFilm(@Valid @RequestBody Film film){
+//		Film savedFilm = imdbRepo.save(film);
+//		URI location = ServletUriComponentsBuilder
+//				.fromCurrentRequest().path("/{id}")
+//				.buildAndExpand(savedFilm.getId())
+//				.toUri();
+//		return ResponseEntity.created(location).build();
+//	}
 	
 	@DeleteMapping(value="/films/{id}")
 	ResponseEntity<Film> deleteFilm(@PathVariable("id") Long id){

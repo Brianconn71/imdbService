@@ -1,5 +1,5 @@
 
 
-insert into film(film_name, genre_id) values('Up', 2)
-insert into film(film_name, genre_id) values('American Gangster', 1)
-insert into film(film_name, genre_id) values('Shrek', 3)
+insert into film(film_name, genre_id, director) values('Up', 2, 'Will Ferrell')
+insert into film(film_name, genre_id, director) values('American Gangster', 1, 'Will Ferrell')
+insert into film(film_name, genre_id, director) values('Shrek', 3, 'Will Ferrell')
