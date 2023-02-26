@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -24,11 +25,8 @@ public class Film implements Serializable{
 	private String name;
 	
 	@Size(min=2, max=100)
-	@Column(name = "director")
-	private String director;
-	
-	@Column(name = "genre_id", nullable=false)
-	private int genreId;
+	@Column(name = "genre")
+	private String genre;
 	
 	public Film() {
 		
@@ -46,19 +44,11 @@ public class Film implements Serializable{
 		this.name = name;
 	}
 	
-	public void setDirector(String director) {
-		this.director = director;
+	public String getGenre() {
+		return genre;
 	}
 	
-	public String getDirector() {
-		return director;
-	}
-	
-	public int getGenreId() {
-		return genreId;
-	}
-	
-	public void setGenreId(int genreId) {
-		this.genreId = genreId;
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 }

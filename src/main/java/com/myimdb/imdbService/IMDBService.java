@@ -72,9 +72,6 @@ public class IMDBService {
 		// find an existing film to modify
 		Optional<Film> optionalFilm = imdbRepo.findById(id);
 		Film existingFilm=optionalFilm.get();
-		
-		// now it needs an update
-		existingFilm.setGenreId(film.getGenreId());
 		existingFilm.setName(film.getName());
 		Film savedFilm = imdbRepo.save(existingFilm);
 		
