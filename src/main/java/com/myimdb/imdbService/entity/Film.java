@@ -32,6 +32,14 @@ public class Film implements Serializable{
 	@Column(name = "genre")
 	private String genre;
 	
+	@Size(min=2, max=100)
+	@Column(name = "language")
+	private String language;
+	
+	@Size(min=2, max=100)
+	@Column(name = "director")
+	private String director;
+	
 	
 	public Film() {
 		
@@ -55,5 +63,21 @@ public class Film implements Serializable{
 	
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+	
+	public String getLanguage() {
+		return language;
+	}
+	
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	
+	public String getDirector() {
+		return director;
+	}
+	
+	public void setDirector(String director) {
+		this.director = director;
 	}
 }

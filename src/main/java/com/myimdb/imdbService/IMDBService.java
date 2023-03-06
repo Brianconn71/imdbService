@@ -60,7 +60,7 @@ public class IMDBService {
 		if(film.isPresent())
             return ResponseEntity.ok().body(film.get());
         else
-            throw new ResourceNotFoundException("Film was not found :: " + id);
+            throw new ResourceNotFoundException("Film was not found " + id);
 	}
 	
 	@PostMapping(value="/films")

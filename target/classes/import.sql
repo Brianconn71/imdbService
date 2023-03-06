@@ -1,8 +1,8 @@
 
 
-insert into film (film_name, genre) values('Up', 'Comedy')
-insert into film (film_name, genre) values('American Gangster', 'RomCom')
-insert into film (film_name, genre) values('Shrek', 'Comedy')
+insert into film (film_name, genre, language, director) values('Up', 'Comedy', 'English', 'Brad Pott')
+insert into film (film_name, genre, language, director) values('American Gangster', 'RomCom', 'French', 'Brad Putt')
+insert into film (film_name, genre, language, director) values('Shrek', 'Comedy', 'English', 'Brad Pett')
 
 INSERT INTO Genres (id, genre_name) VALUES (1, 'Comedy');
 INSERT INTO Genres (id, genre_name) VALUES (2, 'RomCom');
