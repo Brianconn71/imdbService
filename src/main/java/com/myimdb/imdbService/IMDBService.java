@@ -16,11 +16,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.myimdb.imdbService.dao.IMDBRepository;
 import com.myimdb.imdbService.entity.Film;
+import com.myimdb.imdbService.entity.Genre;
 
 @RestController
 @Service
@@ -32,6 +36,12 @@ public class IMDBService {
 	@GetMapping(value="/films")
 	List<Film> getFilmsForGenres(){
 		return imdbRepo.findAll();
+	}
+	
+	@GetMapping(value = "/{genre}")
+	List<Film> getGenre(@PathVariable("genre") String genre) {
+		return imdbRepo.findByGenre(genre);
+
 	}
 	
 	@GetMapping(value="/films/{id}")
