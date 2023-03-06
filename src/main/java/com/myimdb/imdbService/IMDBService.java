@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.myimdb.imdbService.dao.IMDBRepository;
+import com.myimdb.imdbService.dao.GenreRepository;
+import com.myimdb.imdbService.exceptions.ResourceNotFoundException;
 import com.myimdb.imdbService.entity.Film;
 import com.myimdb.imdbService.entity.Genre;
 
@@ -33,9 +35,17 @@ public class IMDBService {
 	@Autowired
 	IMDBRepository imdbRepo;
 	
+	@Autowired
+	GenreRepository genreRepo;
+	
 	@GetMapping(value="/films")
 	List<Film> getFilmsForGenres(){
 		return imdbRepo.findAll();
+	}
+	
+	@GetMapping(value="/genres")
+	List<Genre> getGenres(){
+		return genreRepo.findAll();
 	}
 	
 	@GetMapping(value = "/{genre}")
@@ -45,8 +55,12 @@ public class IMDBService {
 	}
 	
 	@GetMapping(value="/films/{id}")
-	Optional<Film> getFilm(@PathVariable("id") Long id){
-		return imdbRepo.findById(id);
+	public ResponseEntity<Film> getFilm(@PathVariable("id") Long id) throws ResourceNotFoundException {
+		Optional<Film> film = imdbRepo.findById(id);
+		if(film.isPresent())
+            return ResponseEntity.ok().body(film.get());
+        else
+            throw new ResourceNotFoundException("Film was not found :: " + id);
 	}
 	
 	@PostMapping(value="/films")
