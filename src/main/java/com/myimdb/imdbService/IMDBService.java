@@ -35,21 +35,13 @@ public class IMDBService {
 	@Autowired
 	IMDBRepository imdbRepo;
 	
-	@Autowired
-	GenreRepository genreRepo;
-	
 	@GetMapping(value="/films")
 	List<Film> getFilmsForGenres(){
 		return imdbRepo.findAll();
 	}
 	
-	@GetMapping(value="/genres")
-	List<Genre> getGenres(){
-		return genreRepo.findAll();
-	}
-	
-	@GetMapping(value = "/{genre}")
-	List<Film> getGenre(@PathVariable("genre") String genre) {
+	@GetMapping(value = "/films/genre/{genre}")
+	List<Film> getGenreByName(@PathVariable("genre") String genre) {
 		return imdbRepo.findByGenre(genre);
 
 	}
